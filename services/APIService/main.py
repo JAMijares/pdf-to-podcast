@@ -401,6 +401,16 @@ async def process_pdf(
 
         try:
             params_dict = json.loads(transcription_params)
+            
+            # Apply default speaker names if not provided or empty
+            if "speaker_1_name" not in params_dict or not params_dict["speaker_1_name"].strip():
+                params_dict["speaker_1_name"] = os.getenv("DEFAULT_SPEAKER_1_NAME", "Ana")
+            
+            # For dialogue mode, apply default speaker 2 name if not provided or empty
+            if not params_dict.get("monologue", False):
+                if "speaker_2_name" not in params_dict or not params_dict.get("speaker_2_name", "").strip():
+                    params_dict["speaker_2_name"] = os.getenv("DEFAULT_SPEAKER_2_NAME", "Carlos")
+            
             params = TranscriptionParams.model_validate(params_dict)
             span.set_attribute("transcription_params", params.model_dump())
         except (json.JSONDecodeError, ValidationError) as e:

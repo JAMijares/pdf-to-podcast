@@ -55,8 +55,8 @@ class TranscriptionParams(BaseModel):
         ...,
         description="Mapping of speaker IDs to voice IDs. For monologue, only speaker-1 is required",
         example={
-            "speaker-1": "iP95p4xoKVk53GoZ742B",
-            "speaker-2": "9BWtsMINqrJLrRacOk9x",
+            "speaker-1": "XgQWNZcJ8SRkxXwwhPTo",
+            "speaker-2": "JddqVF50ZSIR7SRbJE6u",
         },
     )
     guide: Optional[str] = Field(
