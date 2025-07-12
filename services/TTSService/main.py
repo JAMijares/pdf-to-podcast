@@ -22,8 +22,8 @@ app = FastAPI(title="ElevenLabs TTS Service", debug=True)
 MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "5"))
 
 # Default English voices (fallback)
-DEFAULT_VOICE_1 = os.getenv("DEFAULT_VOICE_1", "iP95p4xoKVk53GoZ742B")
-DEFAULT_VOICE_2 = os.getenv("DEFAULT_VOICE_2", "9BWtsMINqrJLrRacOk9x")
+DEFAULT_VOICE_1 = os.getenv("DEFAULT_VOICE_1", "XgQWNZcJ8SRkxXwwhPTo")
+DEFAULT_VOICE_2 = os.getenv("DEFAULT_VOICE_2", "JddqVF50ZSIR7SRbJE6u")
 
 # Spanish voices (primary for Spanish content)
 DEFAULT_SPANISH_VOICE_1 = os.getenv("DEFAULT_SPANISH_VOICE_1", DEFAULT_VOICE_1)
@@ -202,7 +202,7 @@ class TTSService:
         audio_stream = self.eleven_labs_client.text_to_speech.convert(
             text=text,
             voice_id=voice_id,
-            model_id="eleven_monolingual_v1",
+            model_id="eleven_multilingual_v2",
             output_format="mp3_44100_128",
             voice_settings={"stability": 0.5, "similarity_boost": 0.75, "style": 0.0},
         )

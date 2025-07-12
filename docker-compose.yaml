@@ -37,6 +37,8 @@ services:
       - AGENT_SERVICE_URL=http://agent-service:8964
       - TTS_SERVICE_URL=http://tts-service:8889
       - REDIS_URL=redis://redis:6379
+      - DEFAULT_SPEAKER_1_NAME=${DEFAULT_SPEAKER_1_NAME}
+      - DEFAULT_SPEAKER_2_NAME=${DEFAULT_SPEAKER_2_NAME}
     depends_on:
       - redis
       - pdf-service
